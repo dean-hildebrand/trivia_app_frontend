@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", ()=> {
   console.log('connected')
 fetchQuestions()
+trueFalseButtons().addEventListener('click', nextQuestion)
 })
 
 
@@ -32,5 +33,14 @@ function getFalseButton(){
 
 function getTrueButton() {
   return document.getElementById('true')
+}
+
+function trueFalseButtons() {
+  return document.getElementById('button-div')
+}
+
+function nextQuestion(e) {
+  debugger
+ return renderQuestions()
 }
   
