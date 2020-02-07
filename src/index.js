@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", ()=> {
   console.log('connected')
 fetchQuestions()
-trueFalseButtons().addEventListener('click', nextQuestion)
+getNextButton().addEventListener('click', nextQuestion)
 })
 
 
@@ -9,8 +9,9 @@ function fetchQuestions() {
   fetch('https://opentdb.com/api.php?amount=1&category=9&difficulty=easy&type=boolean')
   .then(res => res.json())
   .then(questionArray => {
+    // debugger
     questionArray.results.forEach(
-     questionData => renderQuestions(questionData)
+     questionData => renderQuestion(questionData)
    )}
   )
 }
@@ -19,12 +20,14 @@ function getQuestionDiv(){
   return document.querySelector('.question-div')
 }
 
-function renderQuestions(questionData) {
+function renderQuestion(questionData) {
+  let btnDiv = document.getElementById('button-div')
   let container = document.getElementById('question-view')
-  let questionP = document.createElement('p')
+  let questionP = document.getElementById('question-text')
   questionP.innerText = questionData.question
 
   container.appendChild(questionP)
+
 }
 
 function getFalseButton(){
@@ -35,12 +38,13 @@ function getTrueButton() {
   return document.getElementById('true')
 }
 
-function trueFalseButtons() {
-  return document.getElementById('button-div')
+function getNextButton() {
+  return document.getElementById('next')
 }
 
-function nextQuestion(e) {
-  debugger
- return renderQuestions()
+function nextQuestion() {
+  let questionP = document.getElementById('question-text')
+  questionP.innerHTML = ""
+  fetchQuestions()
+
 }
-  
