@@ -33,20 +33,20 @@ function renderQuestion(questionData) {
 
 function answerButton() {
   return document.getElementById('button-div')
-  let questionP = document.getElementById('question-text')
-  questionP.innerHTML = ""
-  fetchQuestion()
 }
 
+
 function checkValue(e) {
-  // e.target
   let rightAnswer = questionObject.correct_answer
   console.log(rightAnswer)
   if (rightAnswer == e.target.value){
-  console.log('correct')
+  alert("You're Right")
 } else {
-  console.log('incorrect')
+  alert('Sorry, thats incorrect')
   }
+  let questionP = document.getElementById('question-text')
+  questionP.innerHTML = ""
+  fetchQuestion()
 }
 
   //take in result of true/false button selection
