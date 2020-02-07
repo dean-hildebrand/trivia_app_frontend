@@ -9,11 +9,30 @@ function fetchQuestions() {
   .then(res => res.json())
   .then(questionArray => {
     questionArray.results.forEach(
-     question => renderQuestions(question)
+     questionData => renderQuestions(questionData)
    )}
   )
 }
 
-function renderQuestions(question) {
-  console.log(question)
+function getQuestionDiv(){
+  return document.querySelector('.question-div')
 }
+
+function renderQuestions(questionData) {
+  let container = document.getElementById('question-view')
+  let questionP = document.createElement('p')
+  questionP.innerText = questionData.question
+
+  container.appendChild(getQuestionDiv)
+
+ getQuestionDiv.appendChild(questionP)
+}
+
+function getFalseButton(){
+  return document.getElementById('false')
+}
+
+function getTrueButton() {
+  return document.getElementById('true')
+}
+  
