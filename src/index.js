@@ -23,9 +23,7 @@ function renderQuestions(questionData) {
   let questionP = document.createElement('p')
   questionP.innerText = questionData.question
 
-  container.appendChild(getQuestionDiv)
-
- getQuestionDiv.appendChild(questionP)
+  container.appendChild(questionP)
 }
 
 function getFalseButton(){
