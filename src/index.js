@@ -1,23 +1,19 @@
 document.addEventListener("DOMContentLoaded", ()=> {
   console.log('connected')
-fetchQuestions()
-getFalseButton().addEventListener('click', checkValue)
-getTrueButton().addEventListener('click', checkValue)
-getNextButton().addEventListener('click', nextQuestion)
+fetchQuestion()
+answerButton().addEventListener('click', checkValue)
 })
 
 let questionObject
 
-function fetchQuestions() {
+function fetchQuestion() {
   fetch('https://opentdb.com/api.php?amount=1&type=boolean')
   .then(res => res.json())
   .then(questionArray => {
     // debugger
     questionArray.results.forEach(
      questionData => renderQuestion(questionData)
-
     )})
-  
 }
 
 function getQuestionDiv(){
@@ -31,45 +27,30 @@ function renderQuestion(questionData) {
   let questionP = document.getElementById('question-text')
   questionP.innerText = questionData.question
   container.appendChild(questionP)
-  
+
 }
 
 
-
-function getFalseButton(){
-  return document.getElementById('false')
-}
-
-function getTrueButton() {
-  return document.getElementById('true')
-}
-
-function getNextButton() {
-  return document.getElementById('next')
-}
-
-function nextQuestion() {
+function answerButton() {
+  return document.getElementById('button-div')
   let questionP = document.getElementById('question-text')
   questionP.innerHTML = ""
-  fetchQuestions()
-  checkValue()
+  fetchQuestion()
 }
 
-function checkValue() {
+function checkValue(e) {
+  // e.target
   let rightAnswer = questionObject.correct_answer
   console.log(rightAnswer)
-  //take in result of true/false button selection
-  if (getFalseButton().value !== rightAnswer)  {
-  console.log('incorrect')
-  } else if 
-  (getTrueButton().value === rightAnswer) {
-  console.log("correct")
+  if (rightAnswer == e.target.value){
+  console.log('correct')
 } else {
-  return "incorrect"
+  console.log('incorrect')
+  }
 }
-}//compare result to correct answer
+
+  //take in result of true/false button selection
+
+//compare result to correct answer
 
   //if result and answer is true, answer is correct
-
-
-
