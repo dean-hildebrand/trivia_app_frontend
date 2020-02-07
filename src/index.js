@@ -6,7 +6,7 @@ getNextButton().addEventListener('click', nextQuestion)
 
 
 function fetchQuestions() {
-  fetch('https://opentdb.com/api.php?amount=1&category=9&difficulty=easy&type=boolean')
+  fetch('https://opentdb.com/api.php?amount=1&type=boolean')
   .then(res => res.json())
   .then(questionArray => {
     // debugger
