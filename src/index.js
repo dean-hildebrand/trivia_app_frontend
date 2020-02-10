@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", ()=> {
   console.log('connected')
-  // newGameHandler().addEventListener('click', startGame)
  })
 
 // global variable to access question object
@@ -10,6 +9,10 @@ function questionView() {
   return document.getElementById("question-view")
 }
 
+function getScoreForm() {
+  return document.getElementById('score-form')
+}
+
 function toggleJumbotron() {
   return document.getElementById("jumbotron")
 }
@@ -17,8 +20,7 @@ function toggleJumbotron() {
 function startGame() {
   questionView().style.display = 'block'
   toggleJumbotron().style.display = "none"
-console.log('starting a new game')
-fetchQuestion()
+  fetchQuestion()
 }
 
 function newGameHandler() {
@@ -26,7 +28,7 @@ function newGameHandler() {
 }
 
 function fetchQuestion() {
-  console.log('fetching a question')
+  // console.log('fetching a question')
   fetch('https://opentdb.com/api.php?amount=1&type=boolean')
   .then(res => res.json())
   .then(questionArray => {
@@ -42,17 +44,17 @@ function getQuestionDiv(){
 
 // renders a single question
 function renderQuestion(questionData) {
-  console.log('in the renderQuestion function')
+  // console.log('in the renderQuestion function')
   questionObject = questionData
   let container = document.getElementById('question-view')
   let questionP = document.getElementById('question-text')
   questionP.innerText = questionData.question
   container.appendChild(questionP)
-  answerButton().addEventListener('click', checkValue)
+  questionDiv().addEventListener('click', checkValue)
 }
 
 
-function answerButton() {
+function questionDiv() {
   return document.getElementById('button-div')
 }
 
@@ -74,9 +76,6 @@ function checkValue(e) {
   strikeChecker()
   resetStreak()
   }
-
-  // let questionP = document.getElementById('question-text')
-  // questionP.innerHTML = ""
   fetchQuestion()
 }
 
@@ -88,8 +87,7 @@ function checkValue(e) {
   }
 
   // resets the streak count if user selects the wrong answer
-  function resetStreak(e) {
-
+  function resetStreak() {
     console.log(`You got ${streakCounter().innerText} answers right in a row`)
     streakCounter().innerText = 0
   }
@@ -100,11 +98,38 @@ function checkValue(e) {
     strikeCounter.innerText = newStrikeCount
     if (newStrikeCount === 3){
       strikeCounter.innerHTML = 0
-    gameOver()
+      renderScoreForm()
+
+      gameOver()
   }}
 
   function gameOver() {
+    // debugger
     alert('Thats Strike 3! Game Over!')
     questionObject.innerHTML = ""
+    questionView().style.display = 'none'
+    toggleJumbotron().style.display = "block"
     resetStreak()
+  }
+
+  function renderScoreForm() {
+    let title = document.createElement('h2')
+    title.innerText = "Add your score"
+    let name = document.createElement('input')
+    name.placeholder = "add your name"
+    let score = document.createElement('h3')
+    score.innerText = 300
+    let submit = document.createElement('button')
+    submit.innerText = "Submit Score"
+    getScoreForm().append(title, name, score, submit)
+
+    fetch("http://localhost:3000/game_sessions", {
+      method: "POST",
+      headers: {
+        "Content-Type": 'apllication/json',
+      },
+      body: JSON.stringify({name: "JC", score: 300})
+    })
+
+
   }
