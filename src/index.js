@@ -81,11 +81,14 @@ function checkValue(e) {
     let newStrikeCount = parseInt(strikeCounter.innerText) + 1
     strikeCounter.innerText = newStrikeCount
     if (newStrikeCount === 3){
+      strikeCounter.innerHTML = 0
     gameOver()
   }}
 
   function gameOver() {
     alert('Thats Strike 3! Game Over!')
+    questionObject.innerHTML = ""
+    resetStreak()
   }
     
     
