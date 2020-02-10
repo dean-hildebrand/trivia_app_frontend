@@ -1,14 +1,24 @@
 document.addEventListener("DOMContentLoaded", ()=> {
   console.log('connected')
-fetchQuestion()
-answerButton().addEventListener('click', checkValue)
-})
+  newGameHandler().addEventListener('click', startGame)
+  
+ })
 
 // global variable to access question object
 let questionObject
 
+function startGame() {
+  console.log('starting a new game')
+fetchQuestion()
+
+}
+
+function newGameHandler() {
+  return document.getElementById("start-game")
+}
 
 function fetchQuestion() {
+  console.log('fetching a question')
   fetch('https://opentdb.com/api.php?amount=1&type=boolean')
   .then(res => res.json())
   .then(questionArray => {
@@ -24,13 +34,13 @@ function getQuestionDiv(){
 
 // renders a single question
 function renderQuestion(questionData) {
+  console.log('in the renderQuestion function')
   questionObject = questionData
-  let btnDiv = document.getElementById('button-div')
   let container = document.getElementById('question-view')
   let questionP = document.getElementById('question-text')
   questionP.innerText = questionData.question
   container.appendChild(questionP)
-
+  answerButton().addEventListener('click', checkValue)
 }
 
 
