@@ -7,6 +7,7 @@ answerButton().addEventListener('click', checkValue)
 // global variable to access question object
 let questionObject
 
+
 function fetchQuestion() {
   fetch('https://opentdb.com/api.php?amount=1&type=boolean')
   .then(res => res.json())
