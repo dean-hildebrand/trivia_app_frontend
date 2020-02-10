@@ -52,7 +52,7 @@ function checkValue(e) {
   addToStreak()
 } else {
   console.log('Sorry, thats incorrect')
-
+  strikeChecker()
   resetStreak()
   }
 
@@ -74,3 +74,19 @@ function checkValue(e) {
     console.log(`You got ${streakCounter().innerText} answers right in a row`)
     streakCounter().innerText = 0
   }
+
+  function strikeChecker() {
+    let strikeCounter = document.getElementById('strike-counter')
+    let newStrikeCount = parseInt(strikeCounter.innerText) + 1
+    strikeCounter.innerText = newStrikeCount
+    if (newStrikeCount === 3){
+    gameOver()
+  }}
+
+  function gameOver() {
+    alert('Thats Strike 3! Game Over!')
+  }
+    
+    
+
+
