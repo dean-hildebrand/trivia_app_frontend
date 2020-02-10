@@ -117,19 +117,34 @@ function checkValue(e) {
     title.innerText = "Add your score"
     let name = document.createElement('input')
     name.placeholder = "add your name"
+    name.name = "name"
     let score = document.createElement('h3')
     score.innerText = 300
+    score.name = score
     let submit = document.createElement('button')
     submit.innerText = "Submit Score"
+    submit.id = "submit-score-button"
     getScoreForm().append(title, name, score, submit)
 
+    submit.addEventListener('click', submitForm)
+  }
+   
+function getSubmitScoreButton() {
+  return getElementById('submit-score-button')
+}
+  
+function submitForm(e) {
+    console.log('in submitForm function')
+    let name = e.target.parentElement.querySelector('input').value
+    
     fetch("http://localhost:3000/game_sessions", {
       method: "POST",
       headers: {
-        "Content-Type": 'apllication/json',
+        "Content-Type": 'application/json',
       },
-      body: JSON.stringify({name: "JC", score: 300})
-    })
-
-
+      body: JSON.stringify({name: name, score: 300})
+    }).then(res => res.json())
+    
+    .then(data => console.log(data))
   }
+    
