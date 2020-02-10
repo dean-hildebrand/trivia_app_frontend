@@ -9,10 +9,9 @@
   </head>
 
   <body>
-    <h1>Triva Game Name</h1>
 
 
-    <div class="ui raised very padded text container segment">
+    <div id="jumbotron" class="ui raised very padded text container segment">
       <h2 class="ui header">This is where the name of our game will go</h2>
       <p>Text</p>
       <p>More Text</p>
@@ -20,8 +19,8 @@
 
 <main>
   <div id='question-view'>
+    <h1>Triva Game Name</h1>
   <p id='question-text'></p>
-  </div>
 
         <div id="button-div">
         <button id='true' value="True">True</button>
@@ -36,11 +35,12 @@
         <p id="strike-counter">0
         </p>
       </div>
-   
-      
+    </div>
+
+
       <div class="ui vertical labeled icon menu">
         <a class="item">
-          <i id= "start-game" class="gamepad icon"></i>
+       <i onclick="startGame()" id= "start-game" class="gamepad icon"></i>
           Start a New Quiz
         </a>
         <a class="item">

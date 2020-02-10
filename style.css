@@ -1,3 +1,9 @@
 
 
+#question-view {
+  display: none;
+}
 
+#toggleJumbotron {
+  display: block;
+}

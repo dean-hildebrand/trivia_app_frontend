@@ -1,16 +1,24 @@
 document.addEventListener("DOMContentLoaded", ()=> {
   console.log('connected')
-  newGameHandler().addEventListener('click', startGame)
-  
+  // newGameHandler().addEventListener('click', startGame)
  })
 
 // global variable to access question object
 let questionObject
 
-function startGame() {
-  console.log('starting a new game')
-fetchQuestion()
+function questionView() {
+  return document.getElementById("question-view")
+}
 
+function toggleJumbotron() {
+  return document.getElementById("jumbotron")
+}
+
+function startGame() {
+  questionView().style.display = 'block'
+  toggleJumbotron().style.display = "none"
+console.log('starting a new game')
+fetchQuestion()
 }
 
 function newGameHandler() {
@@ -67,8 +75,8 @@ function checkValue(e) {
   resetStreak()
   }
 
-  let questionP = document.getElementById('question-text')
-  questionP.innerHTML = ""
+  // let questionP = document.getElementById('question-text')
+  // questionP.innerHTML = ""
   fetchQuestion()
 }
 
@@ -81,7 +89,7 @@ function checkValue(e) {
 
   // resets the streak count if user selects the wrong answer
   function resetStreak(e) {
-    
+
     console.log(`You got ${streakCounter().innerText} answers right in a row`)
     streakCounter().innerText = 0
   }
@@ -100,7 +108,3 @@ function checkValue(e) {
     questionObject.innerHTML = ""
     resetStreak()
   }
-    
-    
-
-
