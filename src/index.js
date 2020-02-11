@@ -159,14 +159,16 @@ function resetScore() {
   }
 
 function getSubmitScoreButton() {
-  return getElementById('submit-score-button')
+  return document.getElementById('submit-score-button')
+
 }
 
 function submitForm(e) {
     console.log('in submitForm function')
     // debugger
-
+    
     let name = e.target.parentElement.querySelector('input').value
+    
     let score = getTotalScore().innerHTML
 
     fetch("http://localhost:3000/game_sessions", {
@@ -178,4 +180,12 @@ function submitForm(e) {
     }).then(res => res.json())
 
     .then(data => console.log(data))
+    e.target.parentElement.querySelector('input').value = ""
+    getTotalScore().innerHTML = 0
   }
+
+
+
+  
+
+  
