@@ -1,12 +1,27 @@
 document.addEventListener("DOMContentLoaded", ()=> {
   console.log('connected')
+  
  })
+
 
 // global variable to access question object
 let questionObject
 
+function toggleCurrentScore() {
+  getImmortalTag().style.display = "block"
+  getCurrentScore().style.display = "block"
+}
+
 function questionView() {
   return document.getElementById("question-view")
+}
+
+function getCurrentScore() {
+  return document.getElementById('current-score')
+}
+
+function getImmortalTag() {
+  return document.getElementById('immortal-tag')
 }
 
 function getScoreForm() {
@@ -20,6 +35,7 @@ function toggleJumbotron() {
 function startGame() {
   questionView().style.display = 'block'
   toggleJumbotron().style.display = "none"
+  getCurrentScore().style.display = "block"
   fetchQuestion()
 }
 
@@ -182,7 +198,13 @@ function submitForm(e) {
     .then(data => console.log(data))
     e.target.parentElement.querySelector('input').value = ""
     getTotalScore().innerHTML = 0
+    getScoreForm().style.display = "none"
+    getImmortalTag().style.display = "none"
+    getCurrentScore().style.display = "none"
+
   }
+
+
 
 
 
