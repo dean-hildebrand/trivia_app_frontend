@@ -1,9 +1,17 @@
-
-
 #question-view {
   display: none;
 }
 
 #toggleJumbotron {
   display: block;
+}
+
+#question-view {
+  text-align: center;
+  margin-top: 200px;
+}
+
+#game-title {
+  font-size: 75px;
+
 }

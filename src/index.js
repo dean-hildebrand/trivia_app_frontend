@@ -42,6 +42,10 @@ function getQuestionDiv(){
   return document.querySelector('.question-div')
 }
 
+function getTotalScore() {
+  return document.getElementById('total-score')
+}
+
 // renders a single question
 function renderQuestion(questionData) {
   // console.log('in the renderQuestion function')
@@ -70,14 +74,39 @@ function checkValue(e) {
   if (rightAnswer == e.target.value){
     // change to alert once we are finished testing
   console.log("You're Right")
+  // debugger
   addToStreak()
+  addToScore()
+
+
 } else {
   console.log('Sorry, thats incorrect')
   strikeChecker()
   resetStreak()
   }
   fetchQuestion()
+    }
+
+
+
+function getCurrentScore() {
+  return document.getElementById('score')
 }
+
+function addToScore() {
+let newScore = parseInt(getCurrentScore().innerText) + 1
+getCurrentScore().innerText = newScore
+}
+
+function resetScore() {
+  // captureScore()
+  console.log("score reset")
+  getCurrentScore().innerText = 0
+}
+//
+// function captureScore() {
+//
+// }
 
 
 // if the user selects the correct answer, increment the "streak" by 1
@@ -99,7 +128,6 @@ function checkValue(e) {
     if (newStrikeCount === 3){
       strikeCounter.innerHTML = 0
       renderScoreForm()
-
       gameOver()
   }}
 
@@ -110,6 +138,7 @@ function checkValue(e) {
     questionView().style.display = 'none'
     toggleJumbotron().style.display = "block"
     resetStreak()
+    resetScore()
   }
 
   function renderScoreForm() {
@@ -119,8 +148,8 @@ function checkValue(e) {
     name.placeholder = "add your name"
     name.name = "name"
     let score = document.createElement('h3')
-    score.innerText = 300
-    score.name = score
+    score.innerText = getCurrentScore().innerHTML
+    score.id = 'total-score'
     let submit = document.createElement('button')
     submit.innerText = "Submit Score"
     submit.id = "submit-score-button"
@@ -128,23 +157,25 @@ function checkValue(e) {
 
     submit.addEventListener('click', submitForm)
   }
-   
+
 function getSubmitScoreButton() {
   return getElementById('submit-score-button')
 }
-  
+
 function submitForm(e) {
     console.log('in submitForm function')
+    // debugger
+
     let name = e.target.parentElement.querySelector('input').value
-    
+    let score = getTotalScore().innerHTML
+
     fetch("http://localhost:3000/game_sessions", {
       method: "POST",
       headers: {
         "Content-Type": 'application/json',
       },
-      body: JSON.stringify({name: name, score: 300})
+      body: JSON.stringify({name: name, score: score })
     }).then(res => res.json())
-    
+
     .then(data => console.log(data))
   }
-    
