@@ -7,10 +7,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
 // global variable to access question object
 let questionObject
 
-function toggleCurrentScore() {
-  getImmortalTag().style.display = "block"
-  getCurrentScore().style.display = "block"
-}
+
 
 function questionView() {
   return document.getElementById("question-view")
@@ -35,7 +32,6 @@ function toggleJumbotron() {
 function startGame() {
   questionView().style.display = 'block'
   toggleJumbotron().style.display = "none"
-  getCurrentScore().style.display = "block"
   fetchQuestion()
 }
 
@@ -155,9 +151,11 @@ function resetScore() {
     toggleJumbotron().style.display = "block"
     resetStreak()
     resetScore()
+    getScoreForm().style.display = "block"
   }
 
   function renderScoreForm() {
+    
     let title = document.createElement('h2')
     title.innerText = "Add your score"
     let name = document.createElement('input')
@@ -172,6 +170,7 @@ function resetScore() {
     getScoreForm().append(title, name, score, submit)
 
     submit.addEventListener('click', submitForm)
+    
   }
 
 function getSubmitScoreButton() {
@@ -180,6 +179,7 @@ function getSubmitScoreButton() {
 }
 
 function submitForm(e) {
+  
     console.log('in submitForm function')
     // debugger
     
@@ -199,9 +199,17 @@ function submitForm(e) {
     e.target.parentElement.querySelector('input').value = ""
     getTotalScore().innerHTML = 0
     getScoreForm().style.display = "none"
-    getImmortalTag().style.display = "none"
-    getCurrentScore().style.display = "none"
+    playAgain()
+    
 
+  }
+
+  function playAgain() {
+    if(window.confirm("Would you like to play again?")) {
+      startGame()
+    } else {
+      window.reset()
+    }
   }
 
 
