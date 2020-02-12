@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", ()=> {
   console.log('connected')
   getEachScore()
-  getAllScores()
+ 
  })
 
 
@@ -224,11 +224,7 @@ function submitForm(e) {
       sessionScores(session)))
   }
 
-  function getAllScores() {
-    fetch('http://localhost:3000/game_sessions')
-    .then(resp => resp.json())
-    .then(sessionArray => allSessionScores(sessionArray))
-  }
+ 
 
   function sessionScores(session) {
     // console.log(session)
@@ -247,9 +243,7 @@ function submitForm(e) {
     sessionContainer.appendChild(sessionName)
   }
 
-  function allSessionScores(sessionArray) {
-    let sessionScores = sessionArray.forEach(session => console.log(session.score))
-  }
+
 
 
 
