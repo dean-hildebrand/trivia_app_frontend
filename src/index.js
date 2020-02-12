@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", ()=> {
   console.log('connected')
   noButton().addEventListener('click', handleNoButton)
   yesButton().addEventListener('click', handleYesButton)
+  easyButton().addEventListener('click', handleDifficulty)
+  mediumButton().addEventListener('click', handleDifficulty)
+  hardButton().addEventListener('click', handleDifficulty)
  })
 
 
@@ -27,10 +30,6 @@ function getScoreForm() {
 
 function toggleJumbotron() {
   return document.getElementById("jumbotron")
-}
-
-function newGameHandler() {
-  return document.getElementById("start-game")
 }
 
 function getQuestionDiv(){
@@ -66,17 +65,35 @@ function noButton() {
   return document.getElementById('no')
 }
 
-
-
 function startGame() {
   questionView().style.display = 'block'
   toggleJumbotron().style.display = "none"
   fetchQuestion()
 }
 
+function easyButton() {
+  return document.getElementById('easy')
+}
+
+function mediumButton() {
+  return document.getElementById('medium')
+}
+
+function hardButton() {
+  return document.getElementById('hard')
+}
+
+function handleDifficulty(e) {
+  console.log(e.target)
+}
+
+
+// https://opentdb.com/api.php?amount=10&difficulty=medium&type=boolean
+// difficulty=${difficulty}
+
 function fetchQuestion() {
   // console.log('fetching a question')
-  fetch('https://opentdb.com/api.php?amount=1&type=boolean')
+  fetch(`https://opentdb.com/api.php?amount=1&type=boolean`)
   .then(res => res.json())
   .then(questionArray => {
     // debugger
