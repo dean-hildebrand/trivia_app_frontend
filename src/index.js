@@ -226,6 +226,7 @@ function submitForm(e) {
   function sessionScores(session) {
     console.log(session)
     let sessionContainer = document.getElementById('score-list')
+    let sessionId = session.id
     let sessionName = document.createElement('li')
     sessionName.class = 'session-name'
     sessionName.innerText = session.name + " - " + session.score + " points!"
