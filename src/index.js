@@ -264,7 +264,6 @@ function submitForm(e) {
 
 
  function renderHighScores() {
-
    let highScores = document.getElementById('high-scores')
    if (highScores.style.display === 'none') {
    highScores.style.display = 'block'
