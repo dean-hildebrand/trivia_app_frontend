@@ -217,7 +217,7 @@ function submitForm(e) {
   }
 
   function getAllScores() {
-    fetch('http://http://localhost:3000/game_sessions')
+    fetch('http://localhost:3000/game_sessions')
     .then(resp => resp.json())
     .then(sessionArray => console.log(sessionArray))
   }
