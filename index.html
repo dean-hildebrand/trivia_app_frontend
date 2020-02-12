@@ -17,6 +17,8 @@
       <p>More Text</p>
     </div>
 
+    <div id='about-the-creators'></div>
+
 <main>
   <div id='question-view'>
     <h1 id="game-title">Triva Game Name</h1>
@@ -42,17 +44,31 @@
       <p id='score'>0</p>
     </div>
 
+    <div id='play-again'>
+      <form>
+        <h2>Would you like to try again?</h2>
+        <button id='yes'>Yes</button>
+        <button id='no'>No</button>
+      </form>
+    </div>
+
 
       <div class="ui vertical labeled icon menu">
-        <a onclick="startGame()" id= "start-game" class="item">
+        <a id= "start-game" class="item">
        <i class="gamepad icon"></i>
           Start a New Quiz
+          <div id='difficulty'>Choose Your Difficulty
+                <button id='easy'>Easy</button>
+                <button id='medium'>Medium</button>
+                <button id='hard'>Hard</button>
+          </div>
         </a>
+
         <a class="item">
           <i class="video camera icon" id="high-score-button"></i>
           High Scores
         </a>
-        <a class="item">
+        <a id="about-us" class="item">
           <i class="video play icon"></i>
           About the Creators
         </a>
