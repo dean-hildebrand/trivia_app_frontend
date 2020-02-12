@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", ()=> {
   console.log('connected')
-  getEachScore()
+
   highScoreButton().addEventListener('click', renderHighScores)
+  getEachScore()
  
   noButton().addEventListener('click', handleNoButton)
   yesButton().addEventListener('click', handleYesButton)
@@ -9,7 +10,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
   mediumButton().addEventListener('click', handleDifficulty)
   hardButton().addEventListener('click', handleDifficulty)
   aboutUs().addEventListener('click', aboutUsHandler)
- })
+})
 
 
 // global variable to access question object
@@ -38,6 +39,8 @@ function toggleJumbotron() {
 
 function getHighScoresDiv(){
   return document.getElementById("high-scores")
+}
+
 function getQuestionDiv(){
   return document.querySelector('.question-div')
 }
@@ -84,6 +87,11 @@ function easyButton() {
 function mediumButton() {
   return document.getElementById('medium')
 }
+      
+function highScoreButton() {
+  return document.getElementById('high-score-button')
+}
+      
 
 function hardButton() {
   return document.getElementById('hard')
@@ -225,7 +233,7 @@ function submitForm(e) {
       getTotalScore().innerHTML = 0
       while (getScoreForm().firstChild) {
       getScoreForm().removeChild(getScoreForm().firstChild)
-    }
+      }
       playAgain()
   }
 
@@ -261,10 +269,6 @@ function submitForm(e) {
     sessionContainer.appendChild(sessionName)
   }
 
- function highScoreButton() {
-   return document.getElementById('high-score-button')
- 
- }
 
  function renderHighScores() {
    
@@ -284,9 +288,9 @@ function submitForm(e) {
 
     function handleYesButton(e){
       e.preventDefault()
-      debugger
       startGame()
     }
+      
 
     function handleNoButton(e){
     e.preventDefault()
@@ -310,5 +314,6 @@ function submitForm(e) {
       aboutDiv.append(title, dean, skyler)
       questionView().style.display = 'none'
       toggleJumbotron().style.display = 'none'
-
     }
+  
+  
