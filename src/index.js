@@ -304,7 +304,9 @@ function submitForm(e) {
     function aboutUsHandler(e) {
       // let btnClick = e.target.parentElement
       // debugger
+
       let aboutDiv = document.getElementById("about-the-creators")
+      aboutDiv.innerHTML = ""
       let title = document.createElement('h2')
       title.innerText = "Who created this app."
       let dean = document.createElement('h3')
