@@ -243,6 +243,15 @@ function submitForm(e) {
     sessionContainer.appendChild(sessionName)
   }
 
+ function highScoreButtonHandler() {
+   let highScoreButton = document.getElementById('high-score-button')
+   highScoreButton.addEventListener('click', renderHighScores)
+ }
+
+ function renderHighScores() {
+   console.log('rendering high scores')
+ }
+
 
 
 
