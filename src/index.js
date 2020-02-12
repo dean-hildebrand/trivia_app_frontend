@@ -1,22 +1,22 @@
 document.addEventListener("DOMContentLoaded", ()=> {
   console.log('connected')
+
+  highScoreButton().addEventListener('click', renderHighScores)
+  getEachScore()
+
   noButton().addEventListener('click', handleNoButton)
   yesButton().addEventListener('click', handleYesButton)
   easyButton().addEventListener('click', handleDifficulty)
   mediumButton().addEventListener('click', handleDifficulty)
   hardButton().addEventListener('click', handleDifficulty)
   aboutUs().addEventListener('click', aboutUsHandler)
- })
+})
 
 
 // global variable to access question object and difficulty
 let questionObject
 let difficulty
 
-// function regExpression() {
-// // let regex = /[^a-zA-Z ]/g, ""/;
-// return regex
-// }
 
 function questionView() {
   return document.getElementById("question-view")
@@ -36,6 +36,10 @@ function getScoreForm() {
 
 function toggleJumbotron() {
   return document.getElementById("jumbotron")
+}
+
+function getHighScoresDiv(){
+  return document.getElementById("high-scores")
 }
 
 function getQuestionDiv(){
@@ -84,6 +88,11 @@ function easyButton() {
 function mediumButton() {
   return document.getElementById('medium')
 }
+
+function highScoreButton() {
+  return document.getElementById('high-score-button')
+}
+
 
 function hardButton() {
   return document.getElementById('hard')
@@ -218,7 +227,7 @@ function submitForm(e) {
       getTotalScore().innerHTML = 0
       while (getScoreForm().firstChild) {
       getScoreForm().removeChild(getScoreForm().firstChild)
-    }
+      }
       playAgain()
   }
 
@@ -228,6 +237,45 @@ function submitForm(e) {
     return document.getElementById('play-again')
     }
 
+  function getEachScore() {
+    fetch('http://localhost:3000/game_sessions')
+    .then(resp => resp.json())
+    .then(sessionArray => sessionArray.forEach(session =>
+      sessionScores(session)))
+  }
+
+
+
+  function sessionScores(session) {
+    // console.log(session)
+    let sessionContainer = document.getElementById('score-list')
+    let sessionId = session.id
+    let sessionName = document.createElement('li')
+    sessionName.class = 'session-name'
+    sessionName.innerText = session.name + " - " + session.score + " points!"
+    let sessionScore = document.createElement('span')
+    sessionScore.class = 'session-score'
+    sessionScore.innerText = session.score
+    let scoreArray = [session]
+    console.log(scoreArray)
+
+    // let mergedSession = {name: sessionName, score: sessionScore
+    sessionContainer.appendChild(sessionName)
+  }
+
+
+ function renderHighScores() {
+
+   let highScores = document.getElementById('high-scores')
+   if (highScores.style.display === 'none') {
+   highScores.style.display = 'block'
+   } else {
+     highScores.style.display = 'none'
+   }
+ }
+
+
+
     function playAgain() {
       tryAgain().style.display = 'block'
     }
@@ -236,6 +284,7 @@ function submitForm(e) {
       e.preventDefault()
       startGame()
     }
+
 
     function handleNoButton(e){
     e.preventDefault()
@@ -248,6 +297,7 @@ function submitForm(e) {
 
     function aboutUsHandler(e) {
       let aboutDiv = document.getElementById("about-the-creators")
+      aboutDiv.innerHTML = ""
       let title = document.createElement('h2')
       title.innerText = "Who created this app."
       let dean = document.createElement('h3')

@@ -16,6 +16,10 @@
 
 }
 
+#high-scores {
+  display: none;
+}
+
 #play-again {
   display: none;
 }
