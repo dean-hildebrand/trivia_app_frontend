@@ -260,5 +260,7 @@ function submitForm(e) {
       let skyler = document.createElement('h3')
       skyler.innerText = "Skyler Torian"
       aboutDiv.append(title, dean, skyler)
+      questionView().style.display = 'none'
+      toggleJumbotron().style.display = 'none'
 
     }
