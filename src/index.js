@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", ()=> {
   console.log('connected')
   getEachScore()
+  highScoreButton().addEventListener('click', renderHighScores)
  
  })
 
@@ -243,13 +244,19 @@ function submitForm(e) {
     sessionContainer.appendChild(sessionName)
   }
 
- function highScoreButtonHandler() {
-   let highScoreButton = document.getElementById('high-score-button')
-   highScoreButton.addEventListener('click', renderHighScores)
+ function highScoreButton() {
+   return document.getElementById('high-score-button')
+ 
  }
 
  function renderHighScores() {
-   console.log('rendering high scores')
+   
+   let highScores = document.getElementById('high-scores')
+   if (highScores.style.display === 'none') {
+   highScores.style.display = 'block'
+   } else {
+     highScores.style.display = 'none'
+   }
  }
 
 
