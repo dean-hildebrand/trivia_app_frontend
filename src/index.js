@@ -219,7 +219,21 @@ function submitForm(e) {
   function getAllScores() {
     fetch('http://localhost:3000/game_sessions')
     .then(resp => resp.json())
-    .then(sessionArray => console.log(sessionArray))
+    .then(sessionArray => sessionArray.forEach(session => 
+      sessionScores(session)))
+  }
+
+  function sessionScores(session) {
+    console.log(session)
+    let sessionContainer = document.getElementById('score-list')
+    let sessionName = document.createElement('li')
+    sessionName.class = 'session-name'
+    sessionName.innerText = session.name + " - " + session.score + " points!"
+    let sessionScore = document.createElement('span')
+    sessionScore.class = 'session-score'
+    sessionScore.innerText = session.score
+    // let mergedSession = {name: sessionName, score: sessionScore
+    sessionContainer.appendChild(sessionName)
   }
 
 
