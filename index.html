@@ -4,28 +4,27 @@
 
     <meta charset="utf-8">
     <title>Bears Beets BattleStar Galactica</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Coda+Caption:800|Odibee+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
+      <div id='logo-div'>
+        <img id='logo' src="images/logo.png" alt="Trivia Game Logo">
+      </div>
     <div id='score-form'></div>
-
-    <div id="jumbotron" class="ui raised very padded text container segment">
-      <h2 class="ui header">Bears, Beets, Battlestar Galactica:</h2>
-      <p>A trivia game from Dean and Skyler</p>
-    </div>
 
     <div id='about-the-creators'></div>
 
 <main>
-  <div id='question-view'>
-    <h1 id="game-title">Triva Game Name</h1>
 
+  <div id='question-view'>
+    <p id='question-text'></p>
         <div id="button-div">
-          <p id='question-text'></p>
-        <button id='true' value="True">True</button>
-        <button id='false' value="False">False</button>
+        <button id='true' class="btn btn-dark" value="True">True</button>
+        <button id='false' class="btn btn-dark" value="False">False</button>
       <div id="streak-counter">
         <h3>Streak <span id="streak">0</span></h3>
       </div>
@@ -33,8 +32,9 @@
       <div id="current-streak">
       </div>
       <div id="strikes">
-        <p id="strike-counter">0
-        </p>
+      <h3>Strikes: <span id="strike-counter">0
+        </span>
+      </h3>
         <div id="current-score">
           <h3 id="immortal-tag">Current Score</h3>
           <p id='score'>0</p>
@@ -52,15 +52,17 @@
     </div>
 
 
-      <div class="ui vertical labeled icon menu">
+      <div id='menuDiv' class="ui vertical labeled icon menu">
+        <div id='difficulty'>
         <a id= "start-game" class="item">
        <i class="gamepad icon"></i>
-       <div id='difficulty'>
           Start a New Quiz by choosing a difficulty
-                <button id='easy'>Easy</button>
-                <button id='medium'>Medium</button>
-                <button id='hard'>Hard</button>
+          <div id="game-buttons">
+            <button id='easy' class="btn btn-primary">Easy</button>
+            <button id='medium' class="btn btn-warning">Medium</button>
+            <button id='hard' class="btn btn-danger">Hard</button>
           </div>
+        </div>
         </a>
 
         <a class="item">
@@ -71,7 +73,7 @@
           <i class="video play icon"></i>
           About the Creators
         </a>
-        
+
       </main>
     </div>
     <div id="high-scores">
@@ -80,7 +82,7 @@
 
       </ol>
     </div>
-      
+
 <script src="./src/index.js"></script>
 
   </body>

@@ -76,8 +76,9 @@ function noButton() {
 }
 
 function startGame() {
+  // debugger
   questionView().style.display = 'block'
-  toggleJumbotron().style.display = "none"
+  // toggleJumbotron().style.display = "none"
   fetchQuestion()
 }
 
@@ -98,7 +99,12 @@ function hardButton() {
   return document.getElementById('hard')
 }
 
+function menuDiv() {
+  return document.getElementById('menuDiv')
+}
+
 function handleDifficulty(e) {
+  // debugger
   if (e.target.innerText === "Easy") {
     difficulty = "easy"
   } else if (e.target.innerText === "Medium") {
@@ -107,6 +113,7 @@ function handleDifficulty(e) {
     difficulty = "hard"
   }
   startGame()
+  menuDiv().style.display = 'none'
 }
 
 function fetchQuestion() {
@@ -125,9 +132,9 @@ function renderQuestion(questionData) {
   let container = document.getElementById('question-view')
   let questionP = document.getElementById('question-text')
   // regex question text
-  questionP.innerText = questionData.question.replace(/&quot;/g, '"').replace(/&#039;/g, "'")
+  questionP.innerText = questionData.question.replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&ldquo;/g, '"').replace(/&rdquo;/g, '"')
 
-  container.appendChild(questionP)
+  // container.appendChild(questionP)
   questionDiv().addEventListener('click', checkValue)
 }
 
@@ -191,7 +198,7 @@ function checkValue(e) {
         alert('Thats Strike 3! Game Over!')
         questionObject.innerHTML = ""
         questionView().style.display = 'none'
-        toggleJumbotron().style.display = "block"
+
         resetStreak()
         resetScore()
       }
@@ -256,7 +263,7 @@ function submitForm(e) {
     let sessionScore = document.createElement('span')
     sessionScore.class = 'session-score'
     sessionScore.innerText = session.score
-   
+
 
     // let mergedSession = {name: sessionName, score: sessionScore
     sessionContainer.appendChild(sessionName)
