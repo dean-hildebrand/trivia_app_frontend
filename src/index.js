@@ -9,9 +9,14 @@ document.addEventListener("DOMContentLoaded", ()=> {
  })
 
 
-// global variable to access question object
+// global variable to access question object and difficulty
 let questionObject
 let difficulty
+
+// function regExpression() {
+// // let regex = /[^a-zA-Z ]/g, ""/;
+// return regex
+// }
 
 function questionView() {
   return document.getElementById("question-view")
@@ -85,7 +90,6 @@ function hardButton() {
 }
 
 function handleDifficulty(e) {
-  // debugger
   if (e.target.innerText === "Easy") {
     difficulty = "easy"
   } else if (e.target.innerText === "Medium") {
@@ -96,15 +100,10 @@ function handleDifficulty(e) {
   startGame()
 }
 
-
-// https://opentdb.com/api.php?amount=10&difficulty=medium&type=boolean
-// difficulty=${difficulty}
-
 function fetchQuestion() {
   fetch(`https://opentdb.com/api.php?amount=1&difficulty=${difficulty}&type=boolean`)
   .then(res => res.json())
   .then(questionArray => {
-    // debugger
     questionArray.results.forEach(
      questionData => renderQuestion(questionData)
     )})
@@ -113,12 +112,12 @@ function fetchQuestion() {
 
 // renders a single question
 function renderQuestion(questionData) {
-  // console.log('in the renderQuestion function')
-  // debugger
   questionObject = questionData
   let container = document.getElementById('question-view')
   let questionP = document.getElementById('question-text')
-  questionP.innerText = questionData.question
+  // regex question text
+  questionP.innerText = questionData.question.replace(/&quot;/g, '"').replace(/&#039;/g, "'")
+
   container.appendChild(questionP)
   questionDiv().addEventListener('click', checkValue)
 }
@@ -126,7 +125,7 @@ function renderQuestion(questionData) {
 // checks to see if the user selected the correct answer
 function checkValue(e) {
   let rightAnswer = questionObject.correct_answer
-  // console.log(rightAnswer)
+
   if (rightAnswer == e.target.value){
     // change to alert once we are finished testing
   console.log("You're Right")
@@ -195,7 +194,6 @@ getCurrentScore().innerText = newScore
 }
 
 function resetScore() {
-  // captureScore()
   console.log("score reset")
   getCurrentScore().innerText = 0
 }
@@ -236,7 +234,6 @@ function submitForm(e) {
 
     function handleYesButton(e){
       e.preventDefault()
-      debugger
       startGame()
     }
 
@@ -250,8 +247,6 @@ function submitForm(e) {
     }
 
     function aboutUsHandler(e) {
-      // let btnClick = e.target.parentElement
-      // debugger
       let aboutDiv = document.getElementById("about-the-creators")
       let title = document.createElement('h2')
       title.innerText = "Who created this app."
@@ -262,5 +257,4 @@ function submitForm(e) {
       aboutDiv.append(title, dean, skyler)
       questionView().style.display = 'none'
       toggleJumbotron().style.display = 'none'
-
     }
