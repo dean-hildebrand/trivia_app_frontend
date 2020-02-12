@@ -5,12 +5,13 @@ document.addEventListener("DOMContentLoaded", ()=> {
   easyButton().addEventListener('click', handleDifficulty)
   mediumButton().addEventListener('click', handleDifficulty)
   hardButton().addEventListener('click', handleDifficulty)
+  aboutUs().addEventListener('click', aboutUsHandler)
  })
 
 
 // global variable to access question object
 let questionObject
-
+let difficulty
 
 function questionView() {
   return document.getElementById("question-view")
@@ -84,7 +85,15 @@ function hardButton() {
 }
 
 function handleDifficulty(e) {
-  console.log(e.target)
+  // debugger
+  if (e.target.innerText === "Easy") {
+    difficulty = "easy"
+  } else if (e.target.innerText === "Medium") {
+    difficulty = "medium"
+  } else {
+    difficulty = "hard"
+  }
+  startGame()
 }
 
 
@@ -92,8 +101,7 @@ function handleDifficulty(e) {
 // difficulty=${difficulty}
 
 function fetchQuestion() {
-  // console.log('fetching a question')
-  fetch(`https://opentdb.com/api.php?amount=1&type=boolean`)
+  fetch(`https://opentdb.com/api.php?amount=1&difficulty=${difficulty}&type=boolean`)
   .then(res => res.json())
   .then(questionArray => {
     // debugger
@@ -235,4 +243,22 @@ function submitForm(e) {
     function handleNoButton(e){
     e.preventDefault()
     location.reload()
+    }
+
+    function aboutUs() {
+      return document.getElementById('about-us')
+    }
+
+    function aboutUsHandler(e) {
+      // let btnClick = e.target.parentElement
+      // debugger
+      let aboutDiv = document.getElementById("about-the-creators")
+      let title = document.createElement('h2')
+      title.innerText = "Who created this app."
+      let dean = document.createElement('h3')
+      dean.innerText = "Dean Hildebrand"
+      let skyler = document.createElement('h3')
+      skyler.innerText = "Skyler Torian"
+      aboutDiv.append(title, dean, skyler)
+
     }
