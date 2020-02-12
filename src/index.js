@@ -256,8 +256,7 @@ function submitForm(e) {
     let sessionScore = document.createElement('span')
     sessionScore.class = 'session-score'
     sessionScore.innerText = session.score
-    let scoreArray = [session]
-    console.log(scoreArray)
+   
 
     // let mergedSession = {name: sessionName, score: sessionScore
     sessionContainer.appendChild(sessionName)
