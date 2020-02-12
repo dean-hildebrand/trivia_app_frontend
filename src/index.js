@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", ()=> {
   console.log('connected')
+  getEachScore()
   getAllScores()
  })
 
@@ -216,15 +217,21 @@ function submitForm(e) {
     }
   }
 
-  function getAllScores() {
+  function getEachScore() {
     fetch('http://localhost:3000/game_sessions')
     .then(resp => resp.json())
     .then(sessionArray => sessionArray.forEach(session => 
       sessionScores(session)))
   }
 
+  function getAllScores() {
+    fetch('http://localhost:3000/game_sessions')
+    .then(resp => resp.json())
+    .then(sessionArray => allSessionScores(sessionArray))
+  }
+
   function sessionScores(session) {
-    console.log(session)
+    // console.log(session)
     let sessionContainer = document.getElementById('score-list')
     let sessionId = session.id
     let sessionName = document.createElement('li')
@@ -233,8 +240,15 @@ function submitForm(e) {
     let sessionScore = document.createElement('span')
     sessionScore.class = 'session-score'
     sessionScore.innerText = session.score
+    let scoreArray = [session]
+    console.log(scoreArray)
+    
     // let mergedSession = {name: sessionName, score: sessionScore
     sessionContainer.appendChild(sessionName)
+  }
+
+  function allSessionScores(sessionArray) {
+    let sessionScores = sessionArray.forEach(session => console.log(session.score))
   }
 
 
