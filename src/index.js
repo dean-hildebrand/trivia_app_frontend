@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", ()=> {
   console.log('connected')
-  
+  getAllScores()
  })
 
 
@@ -27,6 +27,10 @@ function getScoreForm() {
 
 function toggleJumbotron() {
   return document.getElementById("jumbotron")
+}
+
+function getHighScoresDiv(){
+  return document.getElementById("high-scores")
 }
 
 function startGame() {
@@ -212,7 +216,11 @@ function submitForm(e) {
     }
   }
 
-  
+  function getAllScores() {
+    fetch('http://http://localhost:3000/game_sessions')
+    .then(resp => resp.json())
+    .then(sessionArray => console.log(sessionArray))
+  }
 
 
 
