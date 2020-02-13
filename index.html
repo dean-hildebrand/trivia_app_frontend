@@ -17,10 +17,6 @@
       </div>
     <div id='score-form'></div>
 
-    <div id='about-the-creators'>
-
-    </div>
-
 <main>
 
   <div id='question-view'>
@@ -54,37 +50,40 @@
       </form>
     </div>
 
-
-      <div id='menuDiv' class="ui vertical labeled icon menu">
-        <div id='difficulty'>
-        <a id= "start-game" class="item">
-       <i class="gamepad icon"></i>
-          Start a New Quiz by choosing a difficulty
-          <div id="game-buttons">
-            <button id='easy' class="btn btn-primary">Easy</button>
-            <button id='medium' class="btn btn-warning">Medium</button>
-            <button id='hard' class="btn btn-danger">Hard</button>
-          </div>
+  <div id="container">
+    <div id='menuDiv' class="ui vertical labeled icon menu">
+      <div id='difficulty'>
+      <a id= "start-game" class="item">
+     <i class="gamepad icon"></i>
+        Start a New Quiz by choosing a difficulty
+        <div id="game-buttons">
+          <button id='easy' class="btn btn-primary">Easy</button>
+          <button id='medium' class="btn btn-warning">Medium</button>
+          <button id='hard' class="btn btn-danger">Hard</button>
         </div>
-        </a>
+      </div>
+      </a>
 
-        <a class="item">
-          <i class="video camera icon" id="high-score-button"></i>
-          High Scores
-        </a>
-        <a id="about-us" class="item">
-          <i class="video play icon"></i>
-          About the Creators
-        </a>
+      <a class="item">
+        <i class="video camera icon" id="high-score-button"></i>
+        High Scores
+      </a>
+      <a id="about-us" class="item">
+        <i class="video play icon"></i>
+        About the Creators
+        <div id='about-the-creators'>
+        </div>
+      </a>
 
-      </main>
-    </div>
     <div id="high-scores">
-    <h1 id="high-score-title">High Scores!</h1>
+      <h1 id="high-score-title">High Scores!</h1>
       <ol id="score-list">
-
       </ol>
     </div>
+  </div>
+  </div>
+</main>
+
 
 <script src="./src/index.js"></script>
 

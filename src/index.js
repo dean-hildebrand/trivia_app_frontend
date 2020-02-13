@@ -76,9 +76,7 @@ function noButton() {
 }
 
 function startGame() {
-  // debugger
   questionView().style.display = 'block'
-  // toggleJumbotron().style.display = "none"
   fetchQuestion()
 }
 
@@ -142,11 +140,11 @@ function checkValue(e) {
 
   if (rightAnswer == e.target.value){
     // change to alert once we are finished testing
-  alert("Correct!")
+  console.log("Correct!")
   addToStreak()
   addToScore()
 } else {
-  alert('Sorry, thats incorrect')
+  console.log('Sorry, thats incorrect')
   strikeChecker()
   resetStreak()
   }
@@ -256,7 +254,7 @@ function submitForm(e) {
     let sessionContainer = document.getElementById('score-list')
     let sessionId = session.id
     let sessionName = document.createElement('li')
-    sessionName.class = 'session-name'
+    sessionName.className = 'session-name'
     sessionName.innerText = session.name + " - " + session.score + " points!"
     let sessionScore = document.createElement('span')
     sessionScore.class = 'session-score'
@@ -277,7 +275,14 @@ function submitForm(e) {
    }
  }
 
-
+ // function toggleCreators() {
+ //   let creators = document.getElementById("about-the-creators")
+ //   if (creators.style.display === 'none') {
+ //     creators.style.display === 'block'
+ //   } else {
+ //     creators.style.display === 'none'
+ //   }
+ // }
 
     function playAgain() {
       tryAgain().style.display = 'block'
@@ -298,7 +303,8 @@ function submitForm(e) {
       return document.getElementById('about-us')
     }
 
-    function aboutUsHandler(e) {
+    function aboutUsHandler() {
+      // debugger
       let aboutDiv = document.getElementById("about-the-creators")
       aboutDiv.innerHTML = ""
       let title = document.createElement('h2')
@@ -310,15 +316,3 @@ function submitForm(e) {
       aboutDiv.append(title, dean, skyler)
       questionView().style.display = 'none'
     }
-
-function deanGithub(){
-  return document.getElementById('dean-github')
-}
-
-function skylerGithub(){
-  return document.getElementById('skyler-github')
-}
-
-function githubLink() {
-  console.log("link to github")
-}
