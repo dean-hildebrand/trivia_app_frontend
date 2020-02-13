@@ -105,6 +105,14 @@ background-image:
   margin: 10px;
 }
 
-.github-icon {
+#false {
+  width: 200px;
   margin: 20px;
+  background: #1A1A1E;
+}
+
+#true {
+  width: 200px;
+  margin: 20px;
+  background: #1A1A1E;
 }
