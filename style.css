@@ -1,15 +1,18 @@
 body {
-  background: #164666;
   font-family: 'Odibee Sans', cursive;
   background-image: url("images/banner.jpg");
-  background-image: ;
+}
+
+#menuDiv {
+  margin: 10px;
+  border: 2px, solid, black;
 }
 
 #logo{
   height: 300px;
   width: 300px;
   border-radius: 15px;
-
+  margin: 20px;
 }
 
 #logo-div {
@@ -95,4 +98,13 @@ background-image:
 
 #score-form {
   text-align: center;
+}
+
+#about-the-creators {
+  color: white;
+  margin: 10px;
+}
+
+.github-icon {
+  margin: 20px;
 }

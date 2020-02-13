@@ -133,8 +133,6 @@ function renderQuestion(questionData) {
   let questionP = document.getElementById('question-text')
   // regex question text
   questionP.innerText = questionData.question.replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&ldquo;/g, '"').replace(/&rdquo;/g, '"')
-
-  // container.appendChild(questionP)
   questionDiv().addEventListener('click', checkValue)
 }
 
@@ -144,11 +142,11 @@ function checkValue(e) {
 
   if (rightAnswer == e.target.value){
     // change to alert once we are finished testing
-  console.log("You're Right")
+  alert("Correct!")
   addToStreak()
   addToScore()
 } else {
-  console.log('Sorry, thats incorrect')
+  alert('Sorry, thats incorrect')
   strikeChecker()
   resetStreak()
   }
@@ -311,5 +309,16 @@ function submitForm(e) {
       skyler.innerText = "Skyler Torian"
       aboutDiv.append(title, dean, skyler)
       questionView().style.display = 'none'
-      toggleJumbotron().style.display = 'none'
     }
+
+function deanGithub(){
+  return document.getElementById('dean-github')
+}
+
+function skylerGithub(){
+  return document.getElementById('skyler-github')
+}
+
+function githubLink() {
+  console.log("link to github")
+}
