@@ -184,6 +184,7 @@ function checkValue(e) {
         score.innerText = getCurrentScore().innerText
         score.id = 'total-score'
         let submit = document.createElement('button')
+        submit.className = "btn btn-secondary btn-lg"
         submit.innerText = "Submit Score"
         submit.id = "submit-score-button"
         getScoreForm().append(title, name, score, submit)
@@ -191,10 +192,9 @@ function checkValue(e) {
       }
 
       function gameOver() {
-        alert('Thats Strike 3! Game Over!')
+        swal("Thats Strike 3!", "Game Over!", "error");
         questionObject.innerHTML = ""
         questionView().style.display = 'none'
-
         resetStreak()
         resetScore()
       }
@@ -308,7 +308,8 @@ function submitForm(e) {
       let aboutDiv = document.getElementById("about-the-creators")
       aboutDiv.innerHTML = ""
       let title = document.createElement('h2')
-      title.innerText = "Who created this app."
+      title.id = 'creators-header'
+      title.innerText = "Who created this app:"
       let dean = document.createElement('h3')
       dean.innerText = "Dean Hildebrand"
       let skyler = document.createElement('h3')

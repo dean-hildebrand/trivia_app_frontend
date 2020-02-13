@@ -3,6 +3,14 @@ body {
   background-image: url("images/banner.jpg");
 }
 
+h2 {
+  color: white;
+}
+
+#creators-header {
+  color: black;
+}
+
 #container {
   text-align: center;
 }
@@ -117,4 +125,15 @@ body {
   width: 200px;
   margin: 20px;
   background: #1A1A1E;
+}
+
+#submit-score-button {
+  width: 200px;
+  margin: 20px;
+  background: #1A1A1E;
+}
+
+#total-score {
+  font-size: 30px;
+  color: white;
 }
