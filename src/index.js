@@ -140,11 +140,11 @@ function checkValue(e) {
 
   if (rightAnswer == e.target.value){
     // change to alert once we are finished testing
-  console.log("Correct!")
+  alert("Correct! Click to continue")
   addToStreak()
   addToScore()
 } else {
-  console.log('Sorry, thats incorrect')
+  alert('Sorry, thats incorrect')
   strikeChecker()
   resetStreak()
   }
@@ -160,7 +160,7 @@ function checkValue(e) {
 
     // resets the streak count if user selects the wrong answer
     function resetStreak() {
-      console.log(`You got ${streakCounter().innerText} answers right in a row`)
+      // console.log(`You got ${streakCounter().innerText} answers right in a row`)
       streakCounter().innerText = 0
     }
 
@@ -206,14 +206,13 @@ getCurrentScore().innerText = newScore
 }
 
 function resetScore() {
-  console.log("score reset")
+  // console.log("score reset")
   getCurrentScore().innerText = 0
 }
 
 
 function submitForm(e) {
   e.preventDefault()
-    console.log('in submitForm function')
 
     let name = e.target.parentElement.querySelector('input').value
     let score = getTotalScore().innerHTML
