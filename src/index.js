@@ -160,7 +160,6 @@ function checkValue(e) {
 
     // resets the streak count if user selects the wrong answer
     function resetStreak() {
-      // console.log(`You got ${streakCounter().innerText} answers right in a row`)
       streakCounter().innerText = 0
     }
 
@@ -206,7 +205,6 @@ getCurrentScore().innerText = newScore
 }
 
 function resetScore() {
-  // console.log("score reset")
   getCurrentScore().innerText = 0
 }
 
@@ -249,7 +247,6 @@ function submitForm(e) {
 
 
   function sessionScores(session) {
-    // console.log(session)
     let sessionContainer = document.getElementById('score-list')
     let sessionId = session.id
     let sessionName = document.createElement('li')
