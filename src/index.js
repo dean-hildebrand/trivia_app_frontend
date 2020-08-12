@@ -296,6 +296,7 @@ function submitForm(e) {
       return document.getElementById('about-us')
     }
 
+
     function aboutUsHandler() {
 
       let aboutDiv = document.getElementById("about-the-creators")
@@ -304,8 +305,16 @@ function submitForm(e) {
       title.innerText = "Who created this app."
       let dean = document.createElement('h3')
       dean.innerText = "Dean Hildebrand"
+      let github = "http://www.github.com/spike0161"
+      let a = document.createElement("a")
+      a.setAttribute("href", github)
+      a.innerText = "Github"
       let skyler = document.createElement('h3')
       skyler.innerText = "Skyler Torian"
-      aboutDiv.append(title, dean, skyler)
+      let github2 = "http://github.com/skyler-torian"
+      let anchor = document.createElement("a")
+      anchor.setAttribute("href", github2)
+      anchor.innerText = "Github"
+      aboutDiv.append(title, dean, a, skyler, anchor)
       questionView().style.display = 'none'
     }
