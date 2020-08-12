@@ -102,7 +102,6 @@ function menuDiv() {
 }
 
 function handleDifficulty(e) {
-  // debugger
   if (e.target.innerText === "Easy") {
     difficulty = "easy"
   } else if (e.target.innerText === "Medium") {
@@ -139,7 +138,6 @@ function checkValue(e) {
   let rightAnswer = questionObject.correct_answer
 
   if (rightAnswer == e.target.value){
-    // change to alert once we are finished testing
   alert("Correct! Click to continue")
   addToStreak()
   addToScore()
@@ -193,7 +191,6 @@ function checkValue(e) {
         alert('Thats Strike 3! Game Over!')
         questionObject.innerHTML = ""
         questionView().style.display = 'none'
-
         resetStreak()
         resetScore()
       }
@@ -300,7 +297,7 @@ function submitForm(e) {
     }
 
     function aboutUsHandler() {
-      // debugger
+
       let aboutDiv = document.getElementById("about-the-creators")
       aboutDiv.innerHTML = ""
       let title = document.createElement('h2')
